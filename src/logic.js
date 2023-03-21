@@ -1,4 +1,4 @@
-
+let projects = [];
 
 function currentDate() {
   const date = new Date();
@@ -11,15 +11,26 @@ function currentDate() {
     return formattedDate;
   }
   return formatDate();
-  
 }
 
-export default function todoCreate(title, description, priority, project) {
-  const createdDate = currentDate();
 
-  
-  
-  return { title, description, priority, createdDate };
+
+export default function todoCreate(title, description, priority, projectName) {
+  const createdDate = currentDate();
+  const status = 'incomplete';
+  let project;
+
+  if(projectName === undefined) {
+    project = 'default';
+  } else {
+    project = projectName;
+  }
+
+  // const todo = { title, description, priority, createdDate, status, project };
+  // console.log(todo);
+  // projects.push(todo);
+  console.log('this is the projects array', projects);
+  return projects.push({ title, description, priority, createdDate, status, project });
     
 }
 
