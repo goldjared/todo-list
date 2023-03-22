@@ -1,4 +1,4 @@
-let projects = [];
+const todoVault = [];
 
 function currentDate() {
   const date = new Date();
@@ -13,9 +13,7 @@ function currentDate() {
   return formatDate();
 }
 
-
-
-export default function todoCreate(title, description, priority, projectName) {
+function todoCreate(title, description, priority, projectName) {
   const createdDate = currentDate();
   const status = 'incomplete';
   let project;
@@ -26,28 +24,28 @@ export default function todoCreate(title, description, priority, projectName) {
     project = projectName;
   }
 
-  // const todo = { title, description, priority, createdDate, status, project };
-  // console.log(todo);
-  // projects.push(todo);
-  console.log('this is the projects array', projects);
-  return projects.push({ title, description, priority, createdDate, status, project });
+  console.log('this is the projects array', todoVault);
+  return todoVault.push({ title, description, priority, createdDate, status, project });
     
 }
 function modify() {
   function todoStatus(todoIndex) {
-    if(projects[todoIndex].project === 'incomplete') {
-      projects[todoIndex].project = 'complete';
+    if(todoVault[todoIndex].status === 'incomplete') {
+      todoVault[todoIndex].status = 'complete';
     } else {
-      projects[todoIndex].project = 'incomplete';
+      todoVault[todoIndex].status = 'incomplete';
     }
-    
   }
-
+  
   function todoDelete(todoIndex) {
-    projects.splice(todoIndex, 1);
+    todoVault.splice(todoIndex, 1);
   }
   return { todoStatus, todoDelete }
 }
+//  for debug 
+function viewVault() { 
+  return todoVault;
+}
 
 
-export { modify, todoCreate }
+export { modify, todoCreate, viewVault }
