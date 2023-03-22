@@ -33,4 +33,21 @@ export default function todoCreate(title, description, priority, projectName) {
   return projects.push({ title, description, priority, createdDate, status, project });
     
 }
+function modify() {
+  function todoStatus(todoIndex) {
+    if(projects[todoIndex].project === 'incomplete') {
+      projects[todoIndex].project = 'complete';
+    } else {
+      projects[todoIndex].project = 'incomplete';
+    }
+    
+  }
 
+  function todoDelete(todoIndex) {
+    projects.splice(todoIndex, 1);
+  }
+  return { todoStatus, todoDelete }
+}
+
+
+export { modify, todoCreate }
