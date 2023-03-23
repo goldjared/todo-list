@@ -1,4 +1,5 @@
 const todoVault = [];
+const projectVault= ['default'];
 
 function currentDate() {
   const date = new Date();
@@ -13,6 +14,14 @@ function currentDate() {
   return formatDate();
 }
 
+function projectCreate(project) {
+  const projectChecker = projectVault.find(item => item === project);
+
+  if(projectChecker === undefined) {
+    projectVault.push(project);
+  };
+};
+
 function todoCreate(title, description, priority, projectName) {
   const createdDate = currentDate();
   const status = 'incomplete';
@@ -22,6 +31,7 @@ function todoCreate(title, description, priority, projectName) {
     project = 'default';
   } else {
     project = projectName;
+    projectCreate(project);
   }
 
   console.log('this is the projects array', todoVault);
