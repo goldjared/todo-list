@@ -22,6 +22,14 @@ function projectCreate(project) {
   };
 };
 
+function projectView(verifyProject) {
+  todoVault.forEach(item => {
+    if(item.project === verifyProject) {
+    console.log(`its a fuckin match! ${item.title}`);
+  }
+});
+};
+
 function todoCreate(title, description, priority, projectName) {
   const createdDate = currentDate();
   const status = 'incomplete';
@@ -32,9 +40,11 @@ function todoCreate(title, description, priority, projectName) {
   } else {
     project = projectName;
     projectCreate(project);
+    // console.log(projectVault);
+    
   }
 
-  console.log('this is the projects array', todoVault);
+  // console.log('this is the projects array', todoVault);
   return todoVault.push({ title, description, priority, createdDate, status, project });
     
 }
@@ -58,4 +68,4 @@ function viewVault() {
 }
 
 
-export { modify, todoCreate, viewVault }
+export { modify, todoCreate, viewVault, projectView }
