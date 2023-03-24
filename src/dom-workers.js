@@ -10,7 +10,7 @@ function todoForm() {
   const formHeader = document.createElement('div');
   formHeader.classList.add('form-header');
   formHeader.textContent = 'new todo';
-  formContainer.appendChild(formHeader)
+  // formContainer.appendChild(formHeader)
 
   
 
@@ -81,11 +81,33 @@ function todoForm() {
   formExitBtn.classList.add('form-exit-btn');
   formExitBtn.textContent = 'x';
 
+  const formRow1 = document.createElement('div');
+  formRow1.classList.add('form-row-1');
+  formRow1.append(formHeader, formExitBtn)
 
+  const formRow2 = document.createElement('div');
+  formRow2.classList.add('form-row-2');
+  formRow2.append(formTitleLabel, formTitleInput)
 
-  formContainer.append(formExitBtn, formTitleLabel, formTitleInput, formDescLabel, formDescInput, 
-    formPriorityTitle, formPriorityInput1, formPriorityLabel1, formPriorityInput2, formPriorityLabel2, 
-    formPriorityInput3, formPriorityLabel3, formProjectLabel, formProjectInput, formSubmitBtn, formResetBtn)
+  const formRow3 = document.createElement('div');
+  formRow3.classList.add('form-row-3');
+  formRow3.append(formDescLabel, formDescInput)
+
+  const formRow4 = document.createElement('div');
+  formRow4.classList.add('form-row-4');
+  formRow4.append(formPriorityTitle, formPriorityInput1, formPriorityLabel1, formPriorityInput2, formPriorityLabel2, 
+  formPriorityInput3, formPriorityLabel3)
+
+  const formRow5 = document.createElement('div');
+  formRow5.classList.add('form-row-5');
+  formRow5.append(formProjectLabel, formProjectInput)
+
+  const formRow6 = document.createElement('div');
+  formRow6.classList.add('form-row-6');
+  formRow6.append(formSubmitBtn, formResetBtn)
+    
+  formContainer.append(formRow1, formRow2 , formRow3, formRow4, 
+    formRow5, formRow6)
 
   
 
