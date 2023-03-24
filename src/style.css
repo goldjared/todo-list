@@ -50,8 +50,6 @@ table {
 :root {
   background-color: black;
   color: yellow;
-  margin: 0;
-  padding: 0;
 }
 
 html, body {
@@ -82,4 +80,24 @@ main {
 footer {
   grid-area: 3 / 1 / -1 / -1;
   background-color: brown;
+}
+
+.create-todo-btn {
+  background-color: greenyellow;
+  color: white;
+}
+
+.todo-display {
+  background-color: purple;
+  width: 10rem;
+}
+
+.todo-display :nth-child(1) {
+  font-weight: bold;
+  font-size: larger;
+  background-color: aqua;
+}
+
+.todo-display :nth-child(2) {
+  font-size: large;
 }
