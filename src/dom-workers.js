@@ -124,7 +124,7 @@ function todoBtn() {
     
 }
 
-function todoAddDisplay(todo) {
+function todoAddDisplay(todoObjIndex) {
   const createDisplay = document.createElement('div');
   createDisplay.classList.add('todo-display');
   
