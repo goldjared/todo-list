@@ -23,9 +23,9 @@ function projectCreate(project) {
 };
 
 function projectView(verifyProject) {
-  todoVault.forEach(item => {
-    if(item.project === verifyProject) {
-    console.log(`its a fuckin match! ${item.title}`);
+  todoVault.forEach(todoItem => {
+    if(todoItem.project === verifyProject) {
+    console.log(`its a fuckin match! ${todoItem.title}`);
   }
 });
 };
@@ -34,6 +34,9 @@ function todoCreate(title, description, priority, projectName) {
   const createdDate = currentDate();
   const status = 'incomplete';
   let project;
+  const todoVaultIndex = todoVault.length;
+  console.log(todoVaultIndex);
+
 
   if(projectName === undefined) {
     project = 'default';
@@ -44,8 +47,10 @@ function todoCreate(title, description, priority, projectName) {
     
   }
 
-  // console.log('this is the projects array', todoVault);
-  return todoVault.push({ title, description, priority, createdDate, status, project });
+  const info = `${title},${description},Priority: ${priority},Status: ${status},Project: ${project},Created: ${createdDate}`;
+
+  // console.log('this is the projects array', todoVault)
+  return todoVault.push({ title, description, priority, createdDate, status, project, info, todoVaultIndex });
     
 }
 function modify() {
