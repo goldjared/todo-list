@@ -67,5 +67,12 @@ function viewVault() {
   return todoVault;
 }
 
+function getTodo(todoIndex) {
+  if(todoIndex !== undefined) {
+    return todoVault[todoIndex];
+  }
+  return todoVault[todoVault.length - 1];
+}
 
-export { modify, todoCreate, viewVault, projectView }
+
+export { getTodo, modify, todoCreate, viewVault, projectView }
