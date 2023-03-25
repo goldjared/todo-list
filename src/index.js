@@ -43,9 +43,10 @@ function enableFormListener() {
       case 'Submit':
         todoCreate(form.title.value, form.description.value, form.priority.value, form.project.value);
         todoAddDisplay(getTodo());
+        document.querySelector('form').remove();
         break;
       case 'Reset':
-        // reset form func
+        form.reset();
         break;
       case 'x':
         document.querySelector('form').remove();
