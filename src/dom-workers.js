@@ -133,7 +133,7 @@ function todoAddDisplay(todoObjIndex) {
 
   
 
-  const convertTodoArray = todo.info.split(',');
+  const convertTodoArray = todoObjIndex.info.split(',');
   
   console.log(convertTodoArray);
   convertTodoArray.forEach(item => {
