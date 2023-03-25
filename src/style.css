@@ -56,6 +56,10 @@ html, body {
   height: 100%;
 }
 
+button {
+  border-radius: 5px;
+}
+
 body {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -100,4 +104,37 @@ footer {
 
 .todo-display :nth-child(2) {
   font-size: large;
+}
+
+form {
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-row-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-row-2, .form-row-3, .form-row-5 {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row-6 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-exit-btn {
+  background-color: red;
+}
+
+.form-reset-btn {
+  background-color: rgb(255, 211, 211);
+}
+
+.form-submit-btn {
+  background-color: rgb(225, 255, 179);
 }
