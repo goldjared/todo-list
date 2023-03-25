@@ -37,7 +37,7 @@ function todoForm() {
   const formPriorityInput1 = document.createElement('input');
   formPriorityInput1.setAttribute('type', 'radio');
   formPriorityInput1.setAttribute('id', 'priority1');
-  formPriorityInput1.setAttribute('name', 'priority1');
+  formPriorityInput1.setAttribute('name', 'priority');
   formPriorityInput1.setAttribute('value', 'low');
   const formPriorityLabel1 = document.createElement('label');
   formPriorityLabel1.setAttribute('for', 'priority1');
@@ -46,8 +46,9 @@ function todoForm() {
   const formPriorityInput2 = document.createElement('input');
   formPriorityInput2.setAttribute('type', 'radio');
   formPriorityInput2.setAttribute('id', 'priority2');
-  formPriorityInput2.setAttribute('name', 'priority2');
+  formPriorityInput2.setAttribute('name', 'priority');
   formPriorityInput2.setAttribute('value', 'normal');
+  formPriorityInput2.setAttribute('checked', '');
   const formPriorityLabel2 = document.createElement('label');
   formPriorityLabel2.setAttribute('for', 'priority2');
   formPriorityLabel2.textContent = 'Normal';
@@ -55,7 +56,7 @@ function todoForm() {
   const formPriorityInput3 = document.createElement('input');
   formPriorityInput3.setAttribute('type', 'radio');
   formPriorityInput3.setAttribute('id', 'priority3');
-  formPriorityInput3.setAttribute('name', 'priority3');
+  formPriorityInput3.setAttribute('name', 'priority');
   formPriorityInput3.setAttribute('value', 'high');
   const formPriorityLabel3 = document.createElement('label');
   formPriorityLabel3.setAttribute('for', 'priority3');
