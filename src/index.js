@@ -18,7 +18,6 @@ homePage(); //todo btn is created
 
 const launchFormBtn = document.querySelector('.create-todo-btn');
 launchFormBtn.addEventListener('click', () => {
-  // e.preventDefault();
   if(document.querySelector('form')) {
     document.querySelector('form').remove()
     return;
@@ -26,12 +25,6 @@ launchFormBtn.addEventListener('click', () => {
   console.log('what')
   todoForm();
   enableFormListener();
-  
-  // form.remove();
-
-  // clicking this button should toggle the form.
-   
-
 });
 
 function enableFormListener() {
@@ -44,6 +37,8 @@ function enableFormListener() {
         todoCreate(form.title.value, form.description.value, form.priority.value, form.project.value);
         todoAddDisplay(getTodo());
         document.querySelector('form').remove();
+        todoDomDeleteHandler()
+        // todoListeners();
         break;
       case 'Reset':
         form.reset();
@@ -60,8 +55,45 @@ function enableFormListener() {
   });  
 }
 
+// function todoListeners() {
+//   const deleteTodoBtn = document.querySelectorAll('.delete-btn');
+//   deleteTodoBtn.forEach((i) => {
+//     const deleteTodoBtn = document.querySelectorAll('.delete-btn');
+//     deleteTodoBtn.forEach(function (i) {})
+//   })
+//   deleteTodoBtn.forEach(function (i) {
+//     i.addEventListener('click', function() {
+//       console.log(i);
+//     });
+//   });
+// }
+
+
 
 // todoBtn();
-// todoAddDisplay(viewTodo(0))
-// todoAddDisplay(viewTodo(1))
+// todoAddDisplay(getTodo(0))
+// todoAddDisplay(getTodo(1))
+
+function todoDomDeleteHandler() {
+  const todoDeleteBtns = document.querySelectorAll('.delete-btn');
+  // todoDeleteBtns.forEach((btn) => {
+  //   btn.removeEventListener()
+  //   });
+
+  todoDeleteBtns.forEach((btn) => {
+    if(btn.getAttribute('listener') === 'true') return;
+    btn.setAttribute('listener', 'true');
+    btn.addEventListener('click', (e) => {
+      
+      console.log(e.target.parentNode.data)
+      e.target.parentNode.remove(); // del html element
+      //modify().todoDelete()
+      // html dataset reducer > -1
+      // todoobj todovaultindex reducer > -1
+      console.log(viewVault())
+    });
+  })  
+}
+// todoDomDeleteHandler()
+       
 // console.log(modify().todoDelete(0));
