@@ -1,18 +1,8 @@
 import './style.css';
 import { todoCreate, modify, viewVault, projectView, getTodo } from './logic';
 import homePage from './home';
-import { todoAddDisplay, todoBtn, todoForm } from './dom-workers';
+import { todoAddDisplay, todoBtn, todoForm, domDataIndexReducer } from './dom-workers';
 
-// console.log(viewVault(), 'view1');
-// todoCreate('get the eggs', 'they are cheaper', 'high', 'project10');
-// modify().todoStatus(0);
-// console.log(viewVault(), 'view2');
-
-// (todoCreate('get the', 'theaper', 'high', 'work'));
-
-// (todoCreate('WASABI', 'theaper', 'high', 'project10'));
-// console.log(viewTodo(0));
-// console.log(projectView('project10'));
 homePage(); //todo btn is created
 
 
@@ -37,8 +27,7 @@ function enableFormListener() {
         todoCreate(form.title.value, form.description.value, form.priority.value, form.project.value);
         todoAddDisplay(getTodo());
         document.querySelector('form').remove();
-        todoDomDeleteHandler()
-        // todoListeners();
+        todoDeleteHandler();
         break;
       case 'Reset':
         form.reset();
@@ -55,45 +44,19 @@ function enableFormListener() {
   });  
 }
 
-// function todoListeners() {
-//   const deleteTodoBtn = document.querySelectorAll('.delete-btn');
-//   deleteTodoBtn.forEach((i) => {
-//     const deleteTodoBtn = document.querySelectorAll('.delete-btn');
-//     deleteTodoBtn.forEach(function (i) {})
-//   })
-//   deleteTodoBtn.forEach(function (i) {
-//     i.addEventListener('click', function() {
-//       console.log(i);
-//     });
-//   });
-// }
-
-
-
-// todoBtn();
-// todoAddDisplay(getTodo(0))
-// todoAddDisplay(getTodo(1))
-
-function todoDomDeleteHandler() {
+function todoDeleteHandler() {
   const todoDeleteBtns = document.querySelectorAll('.delete-btn');
-  // todoDeleteBtns.forEach((btn) => {
-  //   btn.removeEventListener()
-  //   });
 
   todoDeleteBtns.forEach((btn) => {
     if(btn.getAttribute('listener') === 'true') return;
     btn.setAttribute('listener', 'true');
     btn.addEventListener('click', (e) => {
-      
-      console.log(e.target.parentNode.data)
+      const currentTodoIndex = e.target.previousElementSibling.dataset.index
+      domDataIndexReducer(currentTodoIndex); // reduce all html data val
+      modify().todoDelete(currentTodoIndex); // delete the todo from vault
       e.target.parentNode.remove(); // del html element
-      //modify().todoDelete()
-      // html dataset reducer > -1
-      // todoobj todovaultindex reducer > -1
+
       console.log(viewVault())
     });
   })  
 }
-// todoDomDeleteHandler()
-       
-// console.log(modify().todoDelete(0));
