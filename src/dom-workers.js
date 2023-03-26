@@ -166,4 +166,15 @@ function todoAddDisplay(todoObjIndex) {
   //  so each time called, this will create a element of obj, and append it to todo display.
 }
 
-export { todoBtn, todoAddDisplay, todoForm }
+function domDataIndexReducer(deletedIndexValue) {
+  const todoDomIndexValues = document.querySelectorAll('.todo-index-value');
+
+  todoDomIndexValues.forEach((currentTodo) => {
+    if(currentTodo.dataset.index > deletedIndexValue) {
+      currentTodo.dataset.index -= 1;
+    }
+    });
+
+}
+
+export { todoBtn, todoAddDisplay, todoForm, domDataIndexReducer }
