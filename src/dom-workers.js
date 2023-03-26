@@ -1,5 +1,9 @@
 const content = document.querySelector('.content');
 
+function getFormValues() {
+  
+}
+
 function todoForm() {
 
   console.log('sfjafafsafsa');
@@ -135,13 +139,18 @@ function todoAddDisplay(todoObjIndex) {
 
   const convertTodoArray = todoObjIndex.info.split(',');
   
-  console.log(convertTodoArray);
+  // console.log(convertTodoArray);
   convertTodoArray.forEach(item => {
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo');
     todoItem.textContent = item;
     createDisplay.appendChild(todoItem);
   });
+  const todoItemIndexValue = document.createElement('div');
+  todoItemIndexValue.setAttribute('data-index-value', `${todoObjIndex.todoVaultIndex}`);
+  todoItemIndexValue.classList.add('todo');
+  createDisplay.appendChild(todoItemIndexValue);
+
 
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete-btn');
