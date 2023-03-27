@@ -60,3 +60,23 @@ function todoDeleteHandler() {
     });
   })  
 }
+
+function todoUpdateStatusHandler() {
+  const todoStatusBtns = document.querySelectorAll('.edit-btn');
+
+  todoStatusBtns.forEach((btn) => {
+    if(btn.getAttribute('listener') === 'true') return;
+    btn.setAttribute('listener', 'true');
+    btn.addEventListener('click', (e) => {
+      console.log(e.target.parentNode.querySelector('#status').textContent);
+      const currentTodoStatus = e.target.parentNode.querySelector('#status').textContent;
+      const currentTodoIndex = e.target.parentNode.querySelector('.todo-index-value').dataset.index;
+      modify().todoStatus(currentTodoIndex); // i think status could call a DomStatus func
+      if(currentTodoStatus === 'Status: incomplete') {
+        e.target.parentNode.querySelector('#status').textContent = 'Status: complete';
+      } else {
+        e.target.parentNode.querySelector('#status').textContent = 'Status: incomplete';
+      }
+    });
+  })
+}
