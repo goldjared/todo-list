@@ -83,10 +83,12 @@ export default function todoForm() {
   const formResetBtn = document.createElement('button');
   formResetBtn.classList.add('form-reset-btn');
   formResetBtn.textContent = 'Reset';
+  formResetBtn.setAttribute('formnovalidate', '')
 
   const formExitBtn = document.createElement('button');
   formExitBtn.classList.add('form-exit-btn');
   formExitBtn.textContent = 'x';
+  formExitBtn.setAttribute('formnovalidate', '')
 
   const formRow1 = document.createElement('div');
   formRow1.classList.add('form-row-1');
