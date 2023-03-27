@@ -38,7 +38,7 @@ function todoCreate(title, description, priority, projectName) {
   console.log(todoVaultIndex);
 
 
-  if(projectName === undefined) {
+  if(projectName === '') {
     project = 'default';
   } else {
     project = projectName;
