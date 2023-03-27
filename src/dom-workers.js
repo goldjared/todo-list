@@ -25,6 +25,9 @@ function todoAddDisplay(todoObjIndex) {
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo');
     todoItem.textContent = item;
+    if(item === 'Status: incomplete') {
+      todoItem.setAttribute('id', 'status');
+    }
     createDisplay.appendChild(todoItem);
   });
   const todoItemIndexValue = document.createElement('div');
