@@ -8,7 +8,7 @@ export default function todoForm() {
 
   const formHeader = document.createElement('div');
   formHeader.classList.add('form-header');
-  formHeader.textContent = 'new todo';
+  formHeader.textContent = 'Add Todo';
   // formContainer.appendChild(formHeader)
 
   
@@ -21,6 +21,7 @@ export default function todoForm() {
   formTitleInput.setAttribute('id', 'title');
   formTitleInput.setAttribute('name', 'title');
   formTitleInput.setAttribute('required', '');
+  formTitleInput.setAttribute('placeholder', 'Gym tomorrow AM')
 
   const formDescLabel = document.createElement('label');
   formDescLabel.setAttribute('for', 'description');
@@ -30,9 +31,11 @@ export default function todoForm() {
   formDescInput.setAttribute('id', 'description');
   formDescInput.setAttribute('name', 'description');
   formDescInput.setAttribute('required', '');
+  formDescInput.setAttribute('placeholder', 'Pull day w/ cardio.')
+
 
   const formPriorityTitle = document.createElement('div');
-  formPriorityTitle.textContent = 'Select Priority:'
+  formPriorityTitle.textContent = 'Select Priority'
   formPriorityTitle.classList.add('form-priority-title');
 
   const formPriorityInput1 = document.createElement('input');
@@ -65,11 +68,13 @@ export default function todoForm() {
 
   const formProjectLabel = document.createElement('label');
   formProjectLabel.setAttribute('for', 'project');
-  formProjectLabel.textContent = 'Project:'
+  formProjectLabel.textContent = 'Project'
   const formProjectInput = document.createElement('input');
   formProjectInput.setAttribute('type', 'text');
   formProjectInput.setAttribute('id', 'project');
   formProjectInput.setAttribute('name', 'project');
+  formProjectInput.setAttribute('placeholder', 'Leave blank for default')
+
 
   const formSubmitBtn = document.createElement('button');
   formSubmitBtn.classList.add('form-submit-btn');
