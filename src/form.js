@@ -15,19 +15,21 @@ export default function todoForm() {
 
   const formTitleLabel = document.createElement('label');
   formTitleLabel.setAttribute('for', 'title');
-  formTitleLabel.textContent = 'Title:'
+  formTitleLabel.textContent = 'Title *'
   const formTitleInput = document.createElement('input');
   formTitleInput.setAttribute('type', 'text');
   formTitleInput.setAttribute('id', 'title');
   formTitleInput.setAttribute('name', 'title');
+  formTitleInput.setAttribute('required', '');
 
   const formDescLabel = document.createElement('label');
   formDescLabel.setAttribute('for', 'description');
-  formDescLabel.textContent = 'Description:'
+  formDescLabel.textContent = 'Description *'
   const formDescInput = document.createElement('textarea');
   // formDescInput.setAttribute('type', 'text');
   formDescInput.setAttribute('id', 'description');
   formDescInput.setAttribute('name', 'description');
+  formDescInput.setAttribute('required', '');
 
   const formPriorityTitle = document.createElement('div');
   formPriorityTitle.textContent = 'Select Priority:'
