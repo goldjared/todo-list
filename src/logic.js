@@ -79,5 +79,16 @@ function getTodo(todoIndex) {
   return todoVault[todoVault.length - 1];
 }
 
+function todoIndexReducer(deletedIndexValue) { // ned to reduce index heres.
+  const todoDomIndexValues = document.querySelectorAll('.todo-index-value');
 
-export { getTodo, modify, todoCreate, viewVault, projectView }
+  todoDomIndexValues.forEach((currentTodo) => {
+    if(currentTodo.dataset.index > deletedIndexValue) {
+      currentTodo.dataset.index -= 1;
+    }
+    });
+
+}
+
+
+export { getTodo, modify, todoCreate, viewVault, projectView, todoIndexReducer }
