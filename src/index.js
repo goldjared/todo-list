@@ -1,7 +1,8 @@
 import './style.css';
 import { todoCreate, modify, viewVault, projectView, getTodo } from './logic';
 import homePage from './home';
-import { todoAddDisplay, todoBtn, todoForm, domDataIndexReducer } from './dom-workers';
+import todoForm from './form';
+import { todoAddDisplay, todoBtn, domDataIndexReducer } from './dom-workers';
 
 homePage(); //todo btn is created
 
@@ -28,6 +29,7 @@ function enableFormListener() {
         todoAddDisplay(getTodo());
         document.querySelector('form').remove();
         todoDeleteHandler();
+        todoUpdateStatusHandler()
         break;
       case 'Reset':
         form.reset();
