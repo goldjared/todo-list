@@ -58,7 +58,6 @@ function domDataIndexReducer(deletedIndexValue) {
       currentTodo.dataset.index -= 1;
     }
     });
-
 }
 
 export { todoBtn, todoAddDisplay, domDataIndexReducer }
