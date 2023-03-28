@@ -29,7 +29,7 @@ function enableFormListener() {
         todoAddDisplay(getTodo());
         document.querySelector('form').remove();
         todoDeleteHandler();
-        todoUpdateStatusHandler()
+        todoUpdateStatusHandler() 
         break;
       case 'Reset':
         form.reset();
