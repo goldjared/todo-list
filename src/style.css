@@ -108,8 +108,15 @@ footer {
 
 form {
   background-color: black;
-  padding: 10px;
+  font-size: larger;
+  padding: 25px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  top: 25%;
+  left: 50%;
 }
 
 .form-row-1 {
@@ -120,6 +127,7 @@ form {
 .form-row-2, .form-row-3, .form-row-5 {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
 .form-row-6 {
