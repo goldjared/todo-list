@@ -5,36 +5,32 @@ function todoBtn() {
   createTodoBtn.classList.add('create-todo-btn');
   createTodoBtn.textContent = 'New Todo +';
   content.appendChild(createTodoBtn);
-  
-    
 }
 
 function todoAddDisplay(todoObjIndex) {
   const createDisplay = document.createElement('div');
   createDisplay.classList.add('todo-display');
-  
-  content.appendChild(createDisplay);
-  
 
-  
+  content.appendChild(createDisplay);
 
   const convertTodoArray = todoObjIndex.info.split(',');
-  
-  // console.log(convertTodoArray);
-  convertTodoArray.forEach(item => {
+
+  convertTodoArray.forEach((item) => {
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo');
     todoItem.textContent = item;
-    if(item === 'Status: incomplete') {
+    if (item === 'Status: incomplete') {
       todoItem.setAttribute('id', 'status');
     }
     createDisplay.appendChild(todoItem);
   });
   const todoItemIndexValue = document.createElement('div');
-  todoItemIndexValue.setAttribute('data-index', `${todoObjIndex.todoVaultIndex}`);
+  todoItemIndexValue.setAttribute(
+    'data-index',
+    `${todoObjIndex.todoVaultIndex}`
+  );
   todoItemIndexValue.classList.add('todo-index-value');
   createDisplay.appendChild(todoItemIndexValue);
-
 
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete-btn');
@@ -54,10 +50,10 @@ function domDataIndexReducer(deletedIndexValue) {
   const todoDomIndexValues = document.querySelectorAll('.todo-index-value');
 
   todoDomIndexValues.forEach((currentTodo) => {
-    if(currentTodo.dataset.index > deletedIndexValue) {
+    if (currentTodo.dataset.index > deletedIndexValue) {
       currentTodo.dataset.index -= 1;
     }
-    });
+  });
 }
 
-export { todoBtn, todoAddDisplay, domDataIndexReducer }
+export { todoBtn, todoAddDisplay, domDataIndexReducer };

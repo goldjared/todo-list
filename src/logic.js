@@ -1,9 +1,9 @@
 const todoVault = [];
-const projectVault= ['default'];
+const projectVault = ['default'];
 
 function currentDate() {
   const date = new Date();
-  
+
   function formatDate() {
     const month = date.getMonth() + 1;
     const day = date.getDate();
@@ -15,20 +15,20 @@ function currentDate() {
 }
 
 function projectCreate(project) {
-  const projectChecker = projectVault.find(item => item === project);
+  const projectChecker = projectVault.find((item) => item === project);
 
-  if(projectChecker === undefined) {
+  if (projectChecker === undefined) {
     projectVault.push(project);
-  };
-};
+  }
+}
 
 function projectView(verifyProject) {
-  todoVault.forEach(todoItem => {
-    if(todoItem.project === verifyProject) {
-    console.log(`its a fuckin match! ${todoItem.title}`);
-  }
-});
-};
+  todoVault.forEach((todoItem) => {
+    if (todoItem.project === verifyProject) {
+      console.log(`its a fuckin match! ${todoItem.title}`);
+    }
+  });
+}
 
 function todoCreate(title, description, priority, projectName) {
   const createdDate = currentDate();
@@ -37,64 +37,72 @@ function todoCreate(title, description, priority, projectName) {
   const todoVaultIndex = todoVault.length;
   console.log(todoVaultIndex);
 
-
-  if(projectName === '') {
+  if (projectName === '') {
     project = 'default';
   } else {
     project = projectName;
     projectCreate(project);
     // console.log(projectVault);
-    
   }
 
   const info = `${title},${description},Priority: ${priority},Status: ${status},Project: ${project},Created: ${createdDate}`;
 
   // console.log('this is the projects array', todoVault)
-  return todoVault.push({ title, description, priority, createdDate, status, project, info, todoVaultIndex });
-    
+  return todoVault.push({
+    title,
+    description,
+    priority,
+    createdDate,
+    status,
+    project,
+    info,
+    todoVaultIndex,
+  });
 }
 function modify() {
   function todoStatus(todoIndex) {
-    if(todoVault[todoIndex].status === 'incomplete') {
+    if (todoVault[todoIndex].status === 'incomplete') {
       todoVault[todoIndex].status = 'complete';
     } else {
       todoVault[todoIndex].status = 'incomplete';
     }
   }
-  
+
   function todoDelete(todoIndex) {
     todoVault.splice(todoIndex, 1);
     todoVault.forEach((currentTodo) => {
-      if(currentTodo.todoVaultIndex > todoIndex) {
+      if (currentTodo.todoVaultIndex > todoIndex) {
         currentTodo.todoVaultIndex -= 1;
       }
-    })
+    });
+  }
+
+  return { todoStatus, todoDelete };
 }
 
-return { todoStatus, todoDelete }
-}
-//  for debug 
-function viewVault() { 
+//  for debug
+function viewVault() {
   return todoVault;
 }
 
 function getTodo(todoIndex) {
-  if(todoIndex !== undefined) {
+  if (todoIndex !== undefined) {
     return todoVault[todoIndex];
   }
+  // console.log(todoVault[todoVault.length], 'length after create')
+  // console.log(todoVault[todoVault.length - 1], 'length minus 1 after create')
+
   return todoVault[todoVault.length - 1];
 }
 
-function todoIndexReducer(deletedIndexValue) { // ned to reduce index heres.
-  const todoDomIndexValues = document.querySelectorAll('.todo-index-value');
+// function todoIndexReducer(deletedIndexValue) { // ned to reduce index heres.
 
-  todoDomIndexValues.forEach((currentTodo) => {
-    if(currentTodo.dataset.index > deletedIndexValue) {
-      currentTodo.dataset.index -= 1;
-    }
-    });
+//   todoVault.forEach((currentTodo) => {
+//     if(currentTodo.index > deletedIndexValue) {
+//       currentTodo.index -= 1;
+//     }
+//     });
 
-}
+// }
 
-
-export { getTodo, modify, todoCreate, viewVault, projectView, todoIndexReducer }
+export { getTodo, modify, todoCreate, viewVault, projectView };
