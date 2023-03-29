@@ -230,3 +230,7 @@ form {
 .form-submit-btn {
   background-color: rgb(225, 255, 179);
 }
+
+input, textarea {
+  border-radius: 5px;
+}
