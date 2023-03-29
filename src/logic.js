@@ -64,8 +64,14 @@ function modify() {
   
   function todoDelete(todoIndex) {
     todoVault.splice(todoIndex, 1);
-  }
-  return { todoStatus, todoDelete }
+    todoVault.forEach((currentTodo) => {
+      if(currentTodo.todoVaultIndex > todoIndex) {
+        currentTodo.todoVaultIndex -= 1;
+      }
+    })
+}
+
+return { todoStatus, todoDelete }
 }
 //  for debug 
 function viewVault() { 
