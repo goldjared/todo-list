@@ -90,3 +90,23 @@ function todoUpdateStatusHandler() {
     });
   });
 }
+tabListener();
+
+function tabListener() {
+  const pageTabs = document.querySelectorAll('a');
+  const content = document.querySelector('.content');
+
+  pageTabs.forEach((btn) => {
+    // if (btn.getAttribute('listener') === 'true') return;
+    // btn.setAttribute('listener', 'true');
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log(e.target.textContent)
+      // console.log(content.lastChild)
+      while(content.lastChild) {
+        content.lastChild.remove();
+      }
+    })
+  })
+}
