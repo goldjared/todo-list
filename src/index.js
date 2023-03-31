@@ -107,6 +107,12 @@ function tabListener() {
       while(content.lastChild) {
         content.lastChild.remove();
       }
+      const pageSelection = e.target.textContent;
+      if(pageSelection === 'Home') {
+        homePage();
+      } else {
+        projectView();
+      }
     })
   })
 }
