@@ -1,10 +1,11 @@
 const content = document.querySelector('.content');
+const sideBar = document.querySelector('.side-bar');
 
 function todoBtn() {
   const createTodoBtn = document.createElement('button');
   createTodoBtn.classList.add('create-todo-btn');
   createTodoBtn.textContent = 'New Todo +';
-  content.appendChild(createTodoBtn);
+  sideBar.appendChild(createTodoBtn);
 }
 
 function todoAddDisplay(todoObjIndex) {
