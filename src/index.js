@@ -116,3 +116,6 @@ function tabListener() {
     })
   })
 }
+tabListener();
+todoDeleteHandler();
+todoUpdateStatusHandler();
