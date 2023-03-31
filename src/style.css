@@ -156,6 +156,9 @@ header {
 .side-bar {
   grid-area: 2 / 1 / 3 / 2;
   background-color: pink;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 main {
