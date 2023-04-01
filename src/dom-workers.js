@@ -47,6 +47,11 @@ function todoAddDisplay(todoObjIndex) {
   //  so each time called, this will create a element of obj, and append it to todo display.
 }
 
+function addGroup(todoArray) {
+  todoArray.forEach((item) => {
+    todoAddDisplay(item)})
+}
+
 function domDataIndexReducer(deletedIndexValue) {
   const todoDomIndexValues = document.querySelectorAll('.todo-index-value');
 

@@ -1,5 +1,6 @@
 import { projectView, projectList } from './logic';
-import { todoAddDisplay } from './dom-workers';
+import { addGroup } from './dom-workers';
+
 export default function viewProjects() {
   const content = document.querySelector('.content');
   const projectContainer = document.createElement('div');
@@ -51,11 +52,6 @@ export default function viewProjects() {
         // now i need to take that array, foreach on it, with add display on each item.
       });
   }())
-
-  function addGroup(todoArray) {
-    todoArray.forEach((item) => {
-      todoAddDisplay(item)})
-  }
     
   }
 
