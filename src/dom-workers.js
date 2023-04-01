@@ -62,4 +62,4 @@ function domDataIndexReducer(deletedIndexValue) {
   });
 }
 
-export { todoBtn, todoAddDisplay, domDataIndexReducer };
+export { todoBtn, todoAddDisplay, addGroup, domDataIndexReducer };

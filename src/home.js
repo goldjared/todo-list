@@ -1,4 +1,5 @@
-import { todoAddDisplay, todoBtn } from './dom-workers';
+import { todoAddDisplay, todoBtn, addGroup } from './dom-workers';
+import { viewVault, currentDate } from './logic';
 
 export default function homePage() {
   const content = document.querySelector('.content');
@@ -16,5 +17,5 @@ export default function homePage() {
   // statsMsg.textContent = `You have ${} todos!, and today's date is ${}` ;
   content.appendChild(welcomeMsg, statsMsg);
 
-  todoBtn();
+  addGroup(viewVault());
 }
