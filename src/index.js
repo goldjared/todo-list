@@ -18,7 +18,7 @@ launchFormBtn.addEventListener('click', () => {
 });
 
 function enableFormListener() {
-  const form = document.querySelector('form');
+  const form = document.querySelector('.todo-form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(e.submitter.innerText);
