@@ -2,14 +2,15 @@ import './style.css';
 import { todoCreate, modify, viewVault, projectView, getTodo } from './logic';
 import homePage from './home';
 import todoForm from './form';
+import viewProjects from './projects';
 import { todoAddDisplay, todoBtn, domDataIndexReducer } from './dom-workers';
 
-homePage(); //todo btn is created
-
+homePage(); 
+todoBtn(); //todo btn is created
 const launchFormBtn = document.querySelector('.create-todo-btn');
 launchFormBtn.addEventListener('click', () => {
-  if (document.querySelector('form')) {
-    document.querySelector('form').remove();
+  if (document.querySelector('.todo-form')) {
+    document.querySelector('.todo-form').remove();
     return;
   }
   todoForm();
@@ -31,7 +32,7 @@ function enableFormListener() {
         );
         // console.log(getTodo());
         todoAddDisplay(getTodo());
-        document.querySelector('form').remove();
+        document.querySelector('.todo-form').remove();
         todoDeleteHandler();
         todoUpdateStatusHandler();
         break;
@@ -39,7 +40,7 @@ function enableFormListener() {
         form.reset();
         break;
       case 'x':
-        document.querySelector('form').remove();
+        document.querySelector('.todo-form').remove();
         break;
       default:
         alert('ERROR');
@@ -90,7 +91,12 @@ function todoUpdateStatusHandler() {
     });
   });
 }
-tabListener();
+// debug to create todos.
+for(let i = 0; i < 5; i++) {
+  todoCreate(`${[i]}`, 'yoo', 'high', 'wateru');
+  todoAddDisplay(getTodo());
+}
+
 
 function tabListener() {
   const pageTabs = document.querySelectorAll('a');
@@ -111,7 +117,7 @@ function tabListener() {
       if(pageSelection === 'Home') {
         homePage();
       } else {
-        projectView();
+        viewProjects().projectOptionCreate();;
       }
     })
   })
@@ -119,3 +125,4 @@ function tabListener() {
 tabListener();
 todoDeleteHandler();
 todoUpdateStatusHandler();
+// viewProjects().projectOptionCreate();
