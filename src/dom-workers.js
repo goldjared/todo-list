@@ -1,3 +1,5 @@
+import enableListeners from './index';
+
 const content = document.querySelector('.content');
 const sideBar = document.querySelector('.side-bar');
 
@@ -50,6 +52,7 @@ function todoAddDisplay(todoObjIndex) {
 function addGroup(todoArray) {
   todoArray.forEach((item) => {
     todoAddDisplay(item)})
+  enableListeners();
 }
 
 function domDataIndexReducer(deletedIndexValue) {
