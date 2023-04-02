@@ -33,8 +33,7 @@ function enableFormListener() {
         // console.log(getTodo());
         todoAddDisplay(getTodo());
         document.querySelector('.todo-form').remove();
-        todoDeleteHandler();
-        todoUpdateStatusHandler();
+        enableListeners();
         break;
       case 'Reset':
         form.reset();
@@ -50,25 +49,8 @@ function enableFormListener() {
   });
 }
 
-function todoDeleteHandler() {
-  const todoDeleteBtns = document.querySelectorAll('.delete-btn');
-
-  todoDeleteBtns.forEach((btn) => {
-    if (btn.getAttribute('listener') === 'true') return;
-    btn.setAttribute('listener', 'true');
-    btn.addEventListener('click', (e) => {
-      const currentTodoIndex = e.target.previousElementSibling.dataset.index;
-      // console.log(e.target.previousElementSibling.dataset.index);
-      domDataIndexReducer(currentTodoIndex); // reduce all html data val
-      modify().todoDelete(currentTodoIndex); // delete the todo from vault
-      e.target.parentNode.remove(); // del html element
-
-      console.log(viewVault());
-    });
-  });
-}
-
-function todoUpdateStatusHandler() {
+export default function enableListeners() {
+  (function todoUpdateStatusHandler() {
   const todoStatusBtns = document.querySelectorAll('.edit-btn');
 
   todoStatusBtns.forEach((btn) => {
@@ -90,6 +72,25 @@ function todoUpdateStatusHandler() {
       }
     });
   });
+}()); // this needed a semi colon, for this to work.
+
+  (function todoDeleteHandler() {
+    const todoDeleteBtns = document.querySelectorAll('.delete-btn');
+
+    todoDeleteBtns.forEach((btn) => {
+      if (btn.getAttribute('listener') === 'true') return;
+      btn.setAttribute('listener', 'true');
+      btn.addEventListener('click', (e) => {
+        const currentTodoIndex = e.target.previousElementSibling.dataset.index;
+        // console.log(e.target.previousElementSibling.dataset.index);
+        domDataIndexReducer(currentTodoIndex); // reduce all html data val
+        modify().todoDelete(currentTodoIndex); // delete the todo from vault
+        e.target.parentNode.remove(); // del html element
+
+        // console.log(viewVault());
+      });
+    });
+  }())
 }
 // debug to create todos.
 for(let i = 0; i < 5; i++) {
@@ -117,12 +118,12 @@ function tabListener() {
       if(pageSelection === 'Home') {
         homePage();
       } else {
-        viewProjects().projectOptionCreate();;
+        viewProjects().projectOptionCreate();
       }
     })
   })
 }
+enableListeners();
 tabListener();
-todoDeleteHandler();
-todoUpdateStatusHandler();
-// viewProjects().projectOptionCreate();
+
+export { enableListeners }
