@@ -3,7 +3,7 @@ export default function todoForm() {
 
   console.log('sfjafafsafsa');
   const formContainer = document.createElement('form');
-  formContainer.classList.add('todo-form')
+  formContainer.classList.add('todo-form');
   content.appendChild(formContainer);
 
   const formHeader = document.createElement('div');

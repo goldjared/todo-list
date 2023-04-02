@@ -11,10 +11,12 @@ export default function homePage() {
 
   const welcomeMsg = document.createElement('div');
   welcomeMsg.classList.add('home-msg');
-  welcomeMsg.textContent = `Welcome, Steve!` ;
+  welcomeMsg.textContent = `Welcome, Steve!`;
   const statsMsg = document.createElement('div');
   statsMsg.classList.add('home-msg');
-  statsMsg.textContent = ` You have ${viewVault().length} todos! Today's date is ${currentDate()}` ;
+  statsMsg.textContent = ` You have ${
+    viewVault().length
+  } todos! Today's date is ${currentDate()}`;
   content.append(welcomeMsg, statsMsg);
 
   addGroup(viewVault());

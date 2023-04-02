@@ -23,14 +23,11 @@ function projectCreate(project) {
 }
 
 function projectView(verifyProject) {
-  const selectedProjectList = []
+  const selectedProjectList = [];
   todoVault.forEach((todoItem) => {
     if (todoItem.project === verifyProject) {
-      
       selectedProjectList.push(todoItem);
-      
     }
-    
   });
   return selectedProjectList;
 }
@@ -69,10 +66,16 @@ function modify() {
   function todoStatus(todoIndex) {
     if (todoVault[todoIndex].status === 'incomplete') {
       todoVault[todoIndex].status = 'complete';
-      console.log('status changed to complete - mod.status()', `index: ${todoIndex}`)
+      console.log(
+        'status changed to complete - mod.status()',
+        `index: ${todoIndex}`
+      );
     } else {
       todoVault[todoIndex].status = 'incomplete';
-      console.log('status changed to incomplete - mod.status()', `index: ${todoIndex}`)
+      console.log(
+        'status changed to incomplete - mod.status()',
+        `index: ${todoIndex}`
+      );
     }
   }
 
@@ -100,4 +103,12 @@ function getTodo(todoIndex) {
   return todoVault[todoVault.length - 1];
 }
 
-export { getTodo, modify, todoCreate, viewVault, projectView, currentDate, projectList };
+export {
+  getTodo,
+  modify,
+  todoCreate,
+  viewVault,
+  projectView,
+  currentDate,
+  projectList,
+};

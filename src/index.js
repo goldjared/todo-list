@@ -1,11 +1,11 @@
 import './style.css';
-import { todoCreate, modify, viewVault, projectView, getTodo } from './logic';
+import { todoCreate, getTodo, modify } from './logic';
 import homePage from './home';
 import todoForm from './form';
 import viewProjects from './projects';
 import { todoAddDisplay, todoBtn, domDataIndexReducer } from './dom-workers';
 
-homePage(); 
+homePage();
 todoBtn(); //todo btn is created
 const launchFormBtn = document.querySelector('.create-todo-btn');
 launchFormBtn.addEventListener('click', () => {
@@ -51,28 +51,27 @@ function enableFormListener() {
 
 export default function enableListeners() {
   (function todoUpdateStatusHandler() {
-  const todoStatusBtns = document.querySelectorAll('.edit-btn');
-
-  todoStatusBtns.forEach((btn) => {
-    if (btn.getAttribute('listener') === 'true') return;
-    btn.setAttribute('listener', 'true');
-    btn.addEventListener('click', (e) => {
-      console.log(e.target.parentNode.querySelector('#status').textContent);
-      const currentTodoStatus =
-        e.target.parentNode.querySelector('#status').textContent;
-      const currentTodoIndex =
-        e.target.parentNode.querySelector('.todo-index-value').dataset.index;
-      modify().todoStatus(currentTodoIndex); // i think status could call a DomStatus func
-      if (currentTodoStatus === 'Status: incomplete') {
-        e.target.parentNode.querySelector('#status').textContent =
-          'Status: complete';
-      } else {
-        e.target.parentNode.querySelector('#status').textContent =
-          'Status: incomplete';
-      }
+    const todoStatusBtns = document.querySelectorAll('.edit-btn');
+    todoStatusBtns.forEach((btn) => {
+      if (btn.getAttribute('listener') === 'true') return;
+      btn.setAttribute('listener', 'true');
+      btn.addEventListener('click', (e) => {
+        console.log(e.target.parentNode.querySelector('#status').textContent);
+        const currentTodoStatus =
+          e.target.parentNode.querySelector('#status').textContent;
+        const currentTodoIndex =
+          e.target.parentNode.querySelector('.todo-index-value').dataset.index;
+        modify().todoStatus(currentTodoIndex); // i think status could call a DomStatus func
+        if (currentTodoStatus === 'Status: incomplete') {
+          e.target.parentNode.querySelector('#status').textContent =
+            'Status: complete';
+        } else {
+          e.target.parentNode.querySelector('#status').textContent =
+            'Status: incomplete';
+        }
+      });
     });
-  });
-}()); // this needed a semi colon, for this to work.
+  })(); // this needed a semi colon, for this to work.
 
   (function todoDeleteHandler() {
     const todoDeleteBtns = document.querySelectorAll('.delete-btn');
@@ -90,14 +89,13 @@ export default function enableListeners() {
         // console.log(viewVault());
       });
     });
-  }())
+  })();
 }
 // debug to create todos.
-for(let i = 0; i < 5; i++) {
+for (let i = 0; i < 5; i++) {
   todoCreate(`${[i]}`, 'yoo', 'high', 'wateru');
   todoAddDisplay(getTodo());
 }
-
 
 function tabListener() {
   const pageTabs = document.querySelectorAll('a');
@@ -109,21 +107,21 @@ function tabListener() {
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log(e.target.textContent)
+      console.log(e.target.textContent);
       // console.log(content.lastChild)
-      while(content.lastChild) {
+      while (content.lastChild) {
         content.lastChild.remove();
       }
       const pageSelection = e.target.textContent;
-      if(pageSelection === 'Home') {
+      if (pageSelection === 'Home') {
         homePage();
       } else {
         viewProjects().projectOptionCreate();
       }
-    })
-  })
+    });
+  });
 }
 enableListeners();
 tabListener();
 
-export { enableListeners }
+export { enableListeners };

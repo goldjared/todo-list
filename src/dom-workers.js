@@ -49,7 +49,8 @@ function todoAddDisplay(todoObjIndex) {
 
 function addGroup(todoArray) {
   todoArray.forEach((item) => {
-    todoAddDisplay(item)})
+    todoAddDisplay(item);
+  });
   enableListeners();
 }
 
