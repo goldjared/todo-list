@@ -27,6 +27,12 @@ function todoAddDisplay(todoObjIndex) {
     }
     createDisplay.appendChild(todoItem);
   });
+  const todoCurrentStatus = document.createElement('div');
+  todoCurrentStatus.classList.add('todo');
+  todoCurrentStatus.setAttribute('id', 'status');
+  todoCurrentStatus.textContent = `Status: ${todoObjIndex.status}`;
+  createDisplay.appendChild(todoCurrentStatus);
+
   const todoItemIndexValue = document.createElement('div');
   todoItemIndexValue.setAttribute(
     'data-index',

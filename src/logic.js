@@ -44,19 +44,16 @@ function todoCreate(title, description, priority, projectName) {
   const status = 'incomplete';
   let project;
   const todoVaultIndex = todoVault.length;
-  console.log(todoVaultIndex);
 
   if (projectName === '') {
     project = 'default';
   } else {
     project = projectName;
     projectCreate(project);
-    // console.log(projectVault);
   }
 
-  const info = `${title},${description},Priority: ${priority},Status: ${status},Project: ${project},Created: ${createdDate}`;
+  const info = `${title},${description},Priority: ${priority},Project: ${project},Created: ${createdDate}`;
 
-  // console.log('this is the projects array', todoVault)
   return todoVault.push({
     title,
     description,
@@ -72,8 +69,10 @@ function modify() {
   function todoStatus(todoIndex) {
     if (todoVault[todoIndex].status === 'incomplete') {
       todoVault[todoIndex].status = 'complete';
+      console.log('status changed to complete - mod.status()', `index: ${todoIndex}`)
     } else {
       todoVault[todoIndex].status = 'incomplete';
+      console.log('status changed to incomplete - mod.status()', `index: ${todoIndex}`)
     }
   }
 
@@ -89,7 +88,6 @@ function modify() {
   return { todoStatus, todoDelete };
 }
 
-//  for debug
 function viewVault() {
   return todoVault;
 }
@@ -98,20 +96,8 @@ function getTodo(todoIndex) {
   if (todoIndex !== undefined) {
     return todoVault[todoIndex];
   }
-  // console.log(todoVault[todoVault.length], 'length after create')
-  // console.log(todoVault[todoVault.length - 1], 'length minus 1 after create')
 
   return todoVault[todoVault.length - 1];
 }
-
-// function todoIndexReducer(deletedIndexValue) { // ned to reduce index heres.
-
-//   todoVault.forEach((currentTodo) => {
-//     if(currentTodo.index > deletedIndexValue) {
-//       currentTodo.index -= 1;
-//     }
-//     });
-
-// }
 
 export { getTodo, modify, todoCreate, viewVault, projectView, currentDate, projectList };
