@@ -23,11 +23,20 @@ function projectCreate(project) {
 }
 
 function projectView(verifyProject) {
+  const selectedProjectList = []
   todoVault.forEach((todoItem) => {
     if (todoItem.project === verifyProject) {
-      console.log(`its a fuckin match! ${todoItem.title}`);
+      
+      selectedProjectList.push(todoItem);
+      
     }
+    
   });
+  return selectedProjectList;
+}
+
+function projectList() {
+  return [...new Set(projectVault)];
 }
 
 function todoCreate(title, description, priority, projectName) {
@@ -105,4 +114,4 @@ function getTodo(todoIndex) {
 
 // }
 
-export { getTodo, modify, todoCreate, viewVault, projectView };
+export { getTodo, modify, todoCreate, viewVault, projectView, currentDate, projectList };
