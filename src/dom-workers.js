@@ -15,17 +15,12 @@ function todoAddDisplay(todoObjIndex) {
   createDisplay.classList.add('todo-display');
 
   content.appendChild(createDisplay);
-
   const convertTodoArray = todoObjIndex.info.split(',');
-
   convertTodoArray.forEach((item) => {
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo');
     todoItem.textContent = item;
-    if (item === 'Status: incomplete') {
-      todoItem.setAttribute('id', 'status');
-    }
-    createDisplay.appendChild(todoItem);
+    createDisplay.append(todoItem);
   });
   const todoCurrentStatus = document.createElement('div');
   todoCurrentStatus.classList.add('todo');
@@ -50,9 +45,6 @@ function todoAddDisplay(todoObjIndex) {
   editButton.classList.add('edit-btn');
   editButton.textContent = 'Edit';
   createDisplay.appendChild(editButton);
-
-  //  each todo obj will be sent here, eg each todo objwill cll this.
-  //  so each time called, this will create a element of obj, and append it to todo display.
 }
 
 function addGroup(todoArray) {
