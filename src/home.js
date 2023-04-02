@@ -1,4 +1,4 @@
-import { todoAddDisplay, todoBtn, addGroup } from './dom-workers';
+import { addGroup } from './dom-workers';
 import { viewVault, currentDate } from './logic';
 
 export default function homePage() {
