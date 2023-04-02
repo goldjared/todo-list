@@ -1,6 +1,19 @@
 const todoVault = [];
 const projectVault = ['default'];
 
+function xlocalStorage() {
+  const getStorage = () => {
+    const testVault = localStorage.getItem('todoVault');
+    console.log('get it', testVault);
+  }
+  const uploadStorage = () => {
+    console.log('upload it');
+    localStorage.setItem('todoVault', todoVault)
+  }
+
+  return { getStorage, uploadStorage }
+}
+
 function currentDate() {
   const date = new Date();
 
@@ -111,4 +124,5 @@ export {
   projectView,
   currentDate,
   projectList,
+  xlocalStorage,
 };
