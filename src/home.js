@@ -11,11 +11,11 @@ export default function homePage() {
 
   const welcomeMsg = document.createElement('div');
   welcomeMsg.classList.add('home-msg');
-  // welcomeMsg.textContent = `Welcome, Steve! You have ${} todos!` ;
+  welcomeMsg.textContent = `Welcome, Steve!` ;
   const statsMsg = document.createElement('div');
   statsMsg.classList.add('home-msg');
-  // statsMsg.textContent = `You have ${} todos!, and today's date is ${}` ;
-  content.appendChild(welcomeMsg, statsMsg);
+  statsMsg.textContent = ` You have ${viewVault().length} todos! Today's date is ${currentDate()}` ;
+  content.append(welcomeMsg, statsMsg);
 
   addGroup(viewVault());
 }
