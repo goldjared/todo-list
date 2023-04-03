@@ -1,5 +1,5 @@
 import './style.css';
-import { todoCreate, getTodo, modify } from './logic';
+import { todoCreate, getTodo, modify, xlocalStorage } from './logic';
 import homePage from './home';
 import todoForm from './form';
 import viewProjects from './projects';
@@ -121,7 +121,19 @@ function tabListener() {
     });
   });
 }
+// xlocalStorage().getStorage();
+// if there is local storage, for each item, todo create, and add to display.
+if(xlocalStorage().checkLocalStorage() === true) {
+  xlocalStorage().getStorage().forEach((item) => {
+    todoCreate(item.title, item.description, item.priority, item.project, item.status, item.createdDate);
+    todoAddDisplay(getTodo());
+  })
+}
+
+// xlocalStorage().checkLocalStorage();
 enableListeners();
 tabListener();
+// xlocalStorage().uploadStorage();
+
 
 export { enableListeners };
