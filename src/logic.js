@@ -52,9 +52,21 @@ function projectList() {
   return [...new Set(projectVault)];
 }
 
-function todoCreate(title, description, priority, projectName) {
-  const createdDate = currentDate();
-  const status = 'incomplete';
+function todoCreate(title, description, priority, projectName, statusName, date) {
+  let createdDate;
+  if (createdDate === undefined) {
+    createdDate = currentDate();
+  } else {
+    createdDate = date;
+  }
+  // const createdDate = currentDate();
+  let status;
+  if (statusName === undefined || statusName === 'incomplete') {
+    status = 'incomplete';
+  } else {
+    status = 'complete';
+  }
+  // const status = 'incomplete';
   let project;
   const todoVaultIndex = todoVault.length;
 
@@ -66,7 +78,7 @@ function todoCreate(title, description, priority, projectName) {
   }
 
   const info = `${title},${description},Priority: ${priority},Project: ${project},Created: ${createdDate}`;
-  xlocalStorage().uploadStorage();
+  
   return todoVault.push({
     title,
     description,
@@ -76,7 +88,7 @@ function todoCreate(title, description, priority, projectName) {
     project,
     info,
     todoVaultIndex,
-  });
+  }) && xlocalStorage().uploadStorage();
 }
 
 function modify() {
