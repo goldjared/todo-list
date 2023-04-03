@@ -92,10 +92,10 @@ export default function enableListeners() {
   })();
 }
 // debug to create todos.
-for (let i = 0; i < 5; i++) {
-  todoCreate(`${[i]}`, 'yoo', 'high', 'wateru');
-  todoAddDisplay(getTodo());
-}
+// for (let i = 0; i < 5; i++) {
+//   todoCreate(`${[i]}`, 'yoo', 'high', 'wateru');
+//   todoAddDisplay(getTodo());
+// }
 
 function tabListener() {
   const pageTabs = document.querySelectorAll('a');
@@ -123,17 +123,25 @@ function tabListener() {
 }
 // xlocalStorage().getStorage();
 // if there is local storage, for each item, todo create, and add to display.
-if(xlocalStorage().checkLocalStorage() === true) {
-  xlocalStorage().getStorage().forEach((item) => {
-    todoCreate(item.title, item.description, item.priority, item.project, item.status, item.createdDate);
-    todoAddDisplay(getTodo());
-  })
+if (xlocalStorage().checkLocalStorage() === true) {
+  xlocalStorage()
+    .getStorage()
+    .forEach((item) => {
+      todoCreate(
+        item.title,
+        item.description,
+        item.priority,
+        item.project,
+        item.status,
+        item.createdDate
+      );
+      todoAddDisplay(getTodo());
+    });
 }
 
 // xlocalStorage().checkLocalStorage();
 enableListeners();
 tabListener();
 // xlocalStorage().uploadStorage();
-
 
 export { enableListeners };

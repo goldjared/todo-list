@@ -7,26 +7,26 @@ function xlocalStorage() {
     localVault = JSON.parse(localStorage.getItem('todoVault'));
     console.log('getStorage', localVault);
     return localVault;
-  }
+  };
   const uploadStorage = () => {
     console.log('upload it');
-    localStorage.setItem('todoVault', JSON.stringify(todoVault))
+    localStorage.setItem('todoVault', JSON.stringify(todoVault));
     // localStorage.setItem('projectVault', JSON.stringify(projectVault))
-    console.log(getStorage(), 'this is the get from upload')
-  }
+    console.log(getStorage(), 'this is the get from upload');
+  };
   const checkLocalStorage = () => {
-    if(getStorage() === []) {
-      console.log('checkLocalStor, this means === []')
+    if (getStorage() === []) {
+      console.log('checkLocalStor, this means === []');
       return false;
     }
-    console.log('checkLocalStor, this means it passed', getStorage())
+    console.log('checkLocalStor, this means it passed', getStorage());
     return true;
 
     // getStorage().forEach((item) => {
     //   todoCreate(item.title, item.description, item.priority, item.project, item.status, item.createdDate);
     // })
-  }
-  return { getStorage, uploadStorage, checkLocalStorage }
+  };
+  return { getStorage, uploadStorage, checkLocalStorage };
 }
 
 function currentDate() {
@@ -64,7 +64,14 @@ function projectList() {
   return [...new Set(projectVault)];
 }
 
-function todoCreate(title, description, priority, projectName, statusName, date) {
+function todoCreate(
+  title,
+  description,
+  priority,
+  projectName,
+  statusName,
+  date
+) {
   let createdDate;
   if (createdDate === undefined) {
     createdDate = currentDate();
@@ -90,33 +97,35 @@ function todoCreate(title, description, priority, projectName, statusName, date)
   }
 
   const info = `${title},${description},Priority: ${priority},Project: ${project},Created: ${createdDate}`;
-  
-  return todoVault.push({
-    title,
-    description,
-    priority,
-    createdDate,
-    status,
-    project,
-    info,
-    todoVaultIndex,
-  }) && xlocalStorage().uploadStorage();
+
+  return (
+    todoVault.push({
+      title,
+      description,
+      priority,
+      createdDate,
+      status,
+      project,
+      info,
+      todoVaultIndex,
+    }) && xlocalStorage().uploadStorage()
+  );
 }
 
 function modify() {
   function projectDelete(verifyProject) {
     let checker = 0;
     todoVault.forEach((item) => {
-      if(item.project === verifyProject.project) {
+      if (item.project === verifyProject.project) {
         checker += 1;
       }
-    })
-    
-    if(checker > 1) {
+    });
+
+    if (checker > 1) {
       return;
     }
 
-    projectVault.splice(projectVault.indexOf(verifyProject.project), 1);  
+    projectVault.splice(projectVault.indexOf(verifyProject.project), 1);
   }
 
   function todoStatus(todoIndex) {
