@@ -75,7 +75,23 @@ function todoCreate(title, description, priority, projectName) {
     todoVaultIndex,
   });
 }
+
 function modify() {
+  function projectDelete(verifyProject) {
+    let checker = 0;
+    todoVault.forEach((item) => {
+      if(item.project === verifyProject.project) {
+        checker += 1;
+      }
+    })
+    
+    if(checker > 1) {
+      return;
+    }
+
+    projectVault.splice(projectVault.indexOf(verifyProject.project), 1);  
+  }
+
   function todoStatus(todoIndex) {
     if (todoVault[todoIndex].status === 'incomplete') {
       todoVault[todoIndex].status = 'complete';
