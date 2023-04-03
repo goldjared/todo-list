@@ -73,7 +73,7 @@ function todoCreate(
   date
 ) {
   let createdDate;
-  if (createdDate === undefined) {
+  if (date === undefined) {
     createdDate = currentDate();
   } else {
     createdDate = date;
