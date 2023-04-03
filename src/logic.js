@@ -1,20 +1,32 @@
 const todoVault = [];
 const projectVault = ['default'];
+let localVault = [];
 
 function xlocalStorage() {
   const getStorage = () => {
-    const testVault = JSON.parse(localStorage.getItem('todoVault'));
-    console.log('get it', testVault);
-    return testVault;
+    localVault = JSON.parse(localStorage.getItem('todoVault'));
+    console.log('getStorage', localVault);
+    return localVault;
   }
   const uploadStorage = () => {
     console.log('upload it');
     localStorage.setItem('todoVault', JSON.stringify(todoVault))
-    localStorage.setItem('projectVault', JSON.stringify(projectVault))
+    // localStorage.setItem('projectVault', JSON.stringify(projectVault))
     console.log(getStorage(), 'this is the get from upload')
   }
+  const checkLocalStorage = () => {
+    if(getStorage() === []) {
+      console.log('checkLocalStor, this means === []')
+      return false;
+    }
+    console.log('checkLocalStor, this means it passed', getStorage())
+    return true;
 
-  return { getStorage, uploadStorage }
+    // getStorage().forEach((item) => {
+    //   todoCreate(item.title, item.description, item.priority, item.project, item.status, item.createdDate);
+    // })
+  }
+  return { getStorage, uploadStorage, checkLocalStorage }
 }
 
 function currentDate() {
