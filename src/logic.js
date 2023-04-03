@@ -3,12 +3,15 @@ const projectVault = ['default'];
 
 function xlocalStorage() {
   const getStorage = () => {
-    const testVault = localStorage.getItem('todoVault');
+    const testVault = JSON.parse(localStorage.getItem('todoVault'));
     console.log('get it', testVault);
+    return testVault;
   }
   const uploadStorage = () => {
     console.log('upload it');
-    localStorage.setItem('todoVault', todoVault)
+    localStorage.setItem('todoVault', JSON.stringify(todoVault))
+    localStorage.setItem('projectVault', JSON.stringify(projectVault))
+    console.log(getStorage(), 'this is the get from upload')
   }
 
   return { getStorage, uploadStorage }
@@ -63,7 +66,7 @@ function todoCreate(title, description, priority, projectName) {
   }
 
   const info = `${title},${description},Priority: ${priority},Project: ${project},Created: ${createdDate}`;
-
+  xlocalStorage().uploadStorage();
   return todoVault.push({
     title,
     description,
@@ -106,15 +109,18 @@ function modify() {
         `index: ${todoIndex}`
       );
     }
+    xlocalStorage().uploadStorage();
   }
 
   function todoDelete(todoIndex) {
+    projectDelete(todoVault[todoIndex]);
     todoVault.splice(todoIndex, 1);
     todoVault.forEach((currentTodo) => {
       if (currentTodo.todoVaultIndex > todoIndex) {
         currentTodo.todoVaultIndex -= 1;
       }
     });
+    xlocalStorage().uploadStorage();
   }
 
   return { todoStatus, todoDelete };
